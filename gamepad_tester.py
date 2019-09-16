@@ -185,11 +185,18 @@ if joystick_count == 0:
     print("ゲームパッドが見つかりません。接続されるまで待ちます。", end="")
     wait_joysticks()
 print("\nゲームパッドが{}個、接続されています。{} Gamepads connected.".format(joystick_count, joystick_count))
+max_lines = 0
 for i in range(joystick_count):
     joystick = pygame.joystick.Joystick(i)
     joystick.init()
     print("Joystick {}:".format(i))
-    print("  name:{}".format(joystick.get_name()))
+    print("  Name:{}".format(joystick.get_name()))
+    print("  Axes:{}".format(joystick.get_numaxes()))
+    print("  Buttons:{}".format(joystick.get_numbuttons()))
+    print("  Hats:{}".format(joystick.get_numhats()))
+    lines = 8 + joystick.get_numaxes() + joystick.get_numbuttons() + joystick.get_numhats()
+    if  lines > max_lines:
+        max_lines = lines
 print("")
 
 input("[エンター]キーを押してください。Press [Enter] to continue.")
@@ -199,7 +206,7 @@ print("Press ctrl-c in this window or close the Gamepad Tester window to finish.
 
 # -------- Gamepad Tester Window -----------
 # Set the width and height of the screen [width,height]
-size = [int(font_size * 18 * joystick_count), int(font_size * 1.1 * 30)]
+size = [int(font_size * 18 * joystick_count), int(font_size * 1.15 * max_lines)]
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Gamepad Tester")
 # Used to manage how fast the screen updates
