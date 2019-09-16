@@ -1,0 +1,15 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Path=/home/pi/gamepad4scratch
+Exec=python3 gamepad_tester.py -p 20
+Icon=scratch
+Terminal=true
+Name=Gamepad
+GenericName=Self-expression/learning tool
+Comment=Scratch with Gamepad
+Categories=Development;Education
+MimeType=application/x-scratch-project
+X-KeepTerminal=true
+StartupNotify=true
