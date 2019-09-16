@@ -4,17 +4,17 @@
 このプロジェクトには、PythonとScratchで書かれたゲームパッドテスターのコードが含まれ、ゲームパッドの機能をチェックしたり、Scratchやpygameのコードをどのように書いたら良いかを知ることができるようになっています。
 
 
-(1) Gamepad.desktop
+1. Gamepad.desktop
     デスクトップに置くランチャーアイコンで、(2)を起動します。
-(2) gamepad_tester.py
+2. gamepad_tester.py
     Python3で書かれたテスターです。ゲームパッドから情報を得てScratch-RSPに流すと同時に画面上にも表示します。。
-(3) GAMEPAD_TEMPLATE.sb
+3. GAMEPAD_TEMPLATE.sb
     Scratch 1.4のテスターと参考用コードで、Scratch-RSP経由で受信したメッセージやセンサー値更新によって各種動作を行ないます。
-(4) scratchRSP.py
+4. scratchRSP.py
     Scratch-RSPのサーバーへ送信をするクラスです。今回は使っていませんが、受信機能も含んでいます。
-(5) send_joystick.py
+5. send_joystick.py
     ゲームパッドからの情報を加工してScratch-RSPへ流す仕組み（関数）です。
-(6) textprint.py
+6. textprint.py
     ゲームパッドからの情報をpygameウィンドウに表示する仕組み（クラス）です。
 
 
