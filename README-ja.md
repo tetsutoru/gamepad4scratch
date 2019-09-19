@@ -7,7 +7,7 @@
 1. Gamepad.desktop：
     デスクトップに置くランチャーアイコンで、(2)を起動します。
 2. gamepad_tester.py：
-    Python3で書かれたテスターです。ゲームパッドから情報を得てScratch-RSPに流すと同時に画面上にも表示します。。
+    Python3で書かれたテスターです。ゲームパッドから情報を得てScratch-RSPに流すと同時に画面上にも表示します。
 3. GAMEPAD_TEMPLATE.sb：
     Scratch 1.4のテスターと参考用コードで、Scratch-RSP経由で受信したメッセージやセンサー値更新によって各種動作を行ないます。
 4. scratchRSP.py：
