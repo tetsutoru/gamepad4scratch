@@ -185,14 +185,39 @@ if joystick_count == 0:
     print("ゲームパッドが見つかりません。接続されるまで待ちます。", end="")
     wait_joysticks()
 print("\nゲームパッドが{}個、接続されています。{} Gamepads connected.".format(joystick_count, joystick_count))
+max_lines = 0
 for i in range(joystick_count):
     joystick = pygame.joystick.Joystick(i)
     joystick.init()
+    lines = 0
+    msg = ''
+
     sensor_name = str(i) + "_name"
     sensor_value = joystick.get_name()
-    print("Joystick {}:".format(sensor_name))
-    print("  name:{}".format(sensor_value))
     scratch.sensor_update(sensor_name, sensor_value[0:sensor_value.find(' ')])
+    msg += "Joystick {}:".format(sensor_name) + '\n'
+    msg += "  Name:{}".format(sensor_value) + '\n'
+    lines += 8
+
+    sensor_value = joystick.get_numaxes()
+    scratch.sensor_update(str(i) + "_num_of_axes", str(sensor_value))
+    msg += "  Axes:{}".format(sensor_value) + '\n'
+    lines += sensor_value
+
+    sensor_value = joystick.get_numbuttons()
+    scratch.sensor_update(str(i) + "_num_of_buttons", str(sensor_value))
+    msg += "  Buttons:{}".format(sensor_value) + '\n'
+    lines += sensor_value
+
+    sensor_value = joystick.get_numhats()
+    scratch.sensor_update(str(i) + "_num_of_hats", str(sensor_value))
+    msg += "  Hats:{}".format(sensor_value) + '\n'
+    lines += sensor_value
+
+    print(msg)
+    if  lines > max_lines:
+        max_lines = lines
+
 print("")
 
 input("[エンター]キーを押してください。Press [Enter] to continue.")
@@ -202,7 +227,7 @@ print("Press ctrl-c in this window or close the Gamepad Tester window to finish.
 
 # -------- Gamepad Tester Window -----------
 # Set the width and height of the screen [width,height]
-size = [int(font_size * 18 * joystick_count), int(font_size * 1.1 * 30)]
+size = [int(font_size * 18 * joystick_count), int(font_size * 1.15 * max_lines)]
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Gamepad Tester")
 # Used to manage how fast the screen updates
