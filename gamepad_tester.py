@@ -188,8 +188,11 @@ print("\nゲームパッドが{}個、接続されています。{} Gamepads con
 for i in range(joystick_count):
     joystick = pygame.joystick.Joystick(i)
     joystick.init()
-    print("Joystick {}:".format(i))
-    print("  name:{}".format(joystick.get_name()))
+    sensor_name = str(i) + "_name"
+    sensor_value = joystick.get_name()
+    print("Joystick {}:".format(sensor_name))
+    print("  name:{}".format(sensor_value))
+    scratch.sensor_update(sensor_name, sensor_value[0:sensor_value.find(' ')])
 print("")
 
 input("[エンター]キーを押してください。Press [Enter] to continue.")
