@@ -20,6 +20,8 @@ from textprint import TextPrint
 import scratchRSP
 from send_joystick import send_joystick, axis_value
 
+scratch = scratchRSP.ScratchRSP()
+joystick_count = 0
 
 PORT = 42001        # Scratch Remote Sensors Protocol port, never change this.
 HOST = 'localhost'  # Scratch is running on my raspi.
@@ -54,8 +56,6 @@ text_color = BLACK
 def event_process():
     # EVENT PROCESSING STEP
     global done
-#    global scratch
-    global event
     for event in pygame.event.get():   # User did something
         # now = datetime.datetime.now()
         if event.type == pygame.QUIT:  # If user closed the window
