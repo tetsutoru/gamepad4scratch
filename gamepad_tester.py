@@ -48,6 +48,7 @@ GRAY = (180, 180, 180)
 NAVY = (80, 80, 180)
 PURPLE = (255, 210, 255)
 WHITE = (255, 255, 255)
+RED = (255, 0, 0)
 # for the pygame window, named Gamepad Tester
 background_color = PURPLE
 text_color = BLACK
@@ -81,11 +82,17 @@ def drawing_window():
     screen.fill(background_color)
     textPrint.reset()
 
+    joystick_count = pygame.joystick.get_count()
+    if joystick_count == 0:
+        print("ゲームパッドが一つもありません。少なくとも1つ接続されるまで待ちます。There is not a single gamepad. Wait until at least one is connected.", end="")
+        textPrint.printS(screen, RED, "(Number of joysticks: 0)")
+        pygame.display.flip()
+        wait_joysticks()
+        print("\nゲームパッドが{}個、接続されています。{} Gamepads connected.".format(joystick_count, joystick_count))
     textPrint.printS(
         screen, GRAY,
         "(Number of joysticks: {})[{:>2.2f}fps]"
-        .format(joystick_count, clock.get_fps())
-        )
+        .format(joystick_count, clock.get_fps()))
 
     # For each joystick:
     for i in range(joystick_count):
@@ -182,7 +189,7 @@ pygame.init()
 pygame.joystick.init()
 joystick_count = pygame.joystick.get_count()
 if joystick_count == 0:
-    print("ゲームパッドが見つかりません。接続されるまで待ちます。", end="")
+    print("ゲームパッドが一つもありません。少なくとも1つ接続されるまで待ちます。There is not a single gamepad. Wait until at least one is connected.", end="")
     wait_joysticks()
 print("\nゲームパッドが{}個、接続されています。{} Gamepads connected.".format(joystick_count, joystick_count))
 max_lines = 0
