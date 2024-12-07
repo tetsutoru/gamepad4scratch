@@ -2,6 +2,8 @@
 This project is to add gamepad / joystick support for Scratch 1.4 mainly on Raspberry Pi. Python / pygame is in between the gamepad and Scratch to transfer information via Scratch-RSP or Scratch Remote Sensors Protocol.
 
 
+test
+
 This project contains gamepad tester code in Python and Scratch, which will work together for you to check your gamepad controls and to know how to use them in your code in Scratch or pygame.
 
 
